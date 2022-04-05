@@ -43,16 +43,14 @@ MATLAB_IDIR   = /usr/local/matlab/extern/include/
 MATLAB_LIBDIR = /usr/local/matlab/bin/glnxa64/
 
 # system or replacement BLAS/LAPACK
-REPLACE_LINALG = 1
+REPLACE_LINALG = 0
 
 ifeq ($(REPLACE_LINALG), 1)
 	LIB_BLAS =   ${SRCDIR}/BLASReplacement.o
 	LIB_LAPACK = ${SRCDIR}/LAPACKReplacement.o
 else
-	LIB_BLAS =   /usr/lib/libblas.so.3gf
-	LIB_LAPACK = /usr/lib/liblapack.so.3gf
-#	LIB_BLAS = ${MATLAB_LIBDIR}/libmwblas.so
-#	LIB_LAPACK = ${MATLAB_LIBDIR}/libmwlapack.so
+	LIB_BLAS =   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+	LIB_LAPACK = /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
 endif
 
 # choice of sparse solver: NONE, MA27, or MA57
